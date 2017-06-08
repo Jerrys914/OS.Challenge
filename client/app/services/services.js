@@ -23,7 +23,6 @@ angular.module('osc.services', [])
     };
   };
   const saveNewProfile = () => {
-    // filterData();
     return $http({
       method: 'POST',
       url: '/api/createNewProfile',
@@ -33,19 +32,6 @@ angular.module('osc.services', [])
       clearData();
     })
   };
-  const filterData = () => {
-    data.basicInfo.sport = data.basicInfo.sport.trim().split(',')
-    if(data.about.charaties){
-      data.about.charaties = data.about.charaties.trim().split(',')
-    } else {
-      data.about.charaties = []
-    }
-    if(data.about.interests) {
-      data.about.interests = data.about.interests.trim().split(',')
-    } else {
-      data.about.interests = []
-    }
-    console.log('FILTERED DATA: ', data)
   };
   const update = () => {
     return $http({
@@ -53,7 +39,6 @@ angular.module('osc.services', [])
       url: '/api/updateProfile',
       data: data
     }).then(() => {
-      console.log('Profile Updated: ', data)
       clearData()
     })
   };

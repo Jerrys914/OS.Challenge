@@ -12,7 +12,6 @@ angular.module('osc.newProfile',[])
 
   $scope.submitBasicInfo = () => {
     Profile.setBasicInfo($scope.data.basicInfo);
-    console.log('Basic: ',Profile.getData());
     $scope.showBasicInfoForm = false;
     $scope.showAboutForm = true;
   }

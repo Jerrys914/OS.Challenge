@@ -26,7 +26,6 @@ const filterProfiles = (arr) => {
 };
 module.exports = {
   createNewProfile(req, res) {
-    console.log('REQ>BODY CREATE NEW: ', req.body)
     let newProfile = new ProfileModel({
       name: req.body.basicInfo.name,
       dateOfBirth: req.body.basicInfo.dob,
@@ -46,19 +45,16 @@ module.exports = {
       if(err) {
         res.status(500).send(err);
       }
-      console.log('Profile Created: ', profile);
       res.end();
     })
   },
   getAllProfiles(req, res){
     console.log('Get All Profiles')
     ProfileModel.find({}).then(profiles => {
-      console.log('PROFILES FROM DB: ', filterProfiles(profiles));
       res.send(filterProfiles(profiles))
     }) 
   },
   update(req, res){
-    console.log('UPDATE: ', req.body)
     ProfileModel.update({_id:req.body.id}, {
       name: req.body.basicInfo.name,
       dateOfBirth: req.body.basicInfo.dob,
@@ -74,9 +70,7 @@ module.exports = {
       married: req.body.about.married,
       drink: req.body.about.drink
     }).then(profile => {
-      console.log('FIND PROFILE: ', profile)
-
+      res.end()
     })
-    res.end()
   }
 }
