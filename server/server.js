@@ -1,3 +1,5 @@
+require('dotenv').config();
+require('./dbConfig.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -10,6 +12,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../client/')));
 app.use(express.static(path.join(__dirname, '/../client/app')));
+app.use(express.static(path.join(__dirname, '/../node_modules')));
 app.use(router);
 
 let port = process.env.PORT || 3000;

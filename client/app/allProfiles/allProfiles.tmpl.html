@@ -1,0 +1,26 @@
+<div ng-controller="AllProfilesCtrl">
+  <div><h1>All Profiles</h1></div>
+  <div ng-hide="noProfiles" ng-repeat="profile in profiles track by $index">
+    <div class='well well-lg' style="width:50%; margin:auto;">
+      <h4>Basic Info</h4>
+      <strong>Name: </strong><span>{{profile.basicInfo.name}}</span><br />
+      <strong>DoB: </strong> <span>{{profile.basicInfo.dob.slice(0,10).split('-').reverse().join('/')}} (d/m/y)</span><br />
+      <strong>Gender: </strong><span>{{profile.basicInfo.gender}}</span><br />
+      <strong>Nationality: </strong><span>{{profile.basicInfo.nationality}}</span><br />
+      <strong>Sport(s): </strong><span>{{profile.basicInfo.sport}}</span><br /><br />
+
+      <h4>About</h4>
+      <strong>Description: </strong><span>{{profile.about.description}}</span><br />
+      <strong>Location: </strong><span>{{profile.about.location}}</span><br />
+      <strong>Association: </strong><span>{{profile.about.association}}</span><br />
+      <strong>Team: </strong><span>{{profile.about.team}}</span><br />
+      <strong>Interests: </strong><span>{{profile.about.interests}}</span><br />
+      <strong>Charaties: </strong><span>{{profile.about.charaties}}</span><br />
+      <strong>Married: </strong><span>{{profile.about.married}}</span><br />
+      <strong>Drinks Alcohol: </strong><span>{{profile.about.drink}}</span>
+    </div><br />
+  </div>
+  <div class='well well-lg' ng-show="noProfiles" style="width:50%; margin:auto; text-align: center">
+    <h2>No Profiles Yet</h2>
+  </div>
+</div>

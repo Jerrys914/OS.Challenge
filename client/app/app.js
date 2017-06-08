@@ -9,8 +9,12 @@ angular.module('osc', [
 .config(($routeProvider, $locationProvider, $httpProvider) => {
   $routeProvider
   .when('/allProfiles', {
-    templateUrl: '',
-    controller: ''
+    templateUrl: './app/allProfiles/allProfiles.tmpl.html',
+    controller: 'AllProfilesCtrl'
+  })
+  .when('/newProfile', {
+    templateUrl: './app/newProfile/newProfile.tmpl.html',
+    controller: 'NewProfileCtrl'
   })
   .otherwise({ redirectTo: '/allProfiles' });
 });
