@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node server/server.js"
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "angular": "^1.6.4",
