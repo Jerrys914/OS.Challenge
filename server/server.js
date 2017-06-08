@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../client/')));
 app.use(express.static(path.join(__dirname, '/../client/app')));
+app.use(router);
 
 let port = process.env.PORT || 3000;
 app.listen(port,(err) => {
