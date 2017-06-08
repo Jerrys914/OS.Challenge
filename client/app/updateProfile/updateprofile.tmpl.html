@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
-  <div class="page-header"><h1>New Profile</h1></div>
+  <div class="page-header"><h1>Update Profile</h1></div>
 
   <div>
     <div ng-show="showBasicInfoForm" class="page-header"><h2>Basic Info</h2>
@@ -41,9 +41,6 @@
       <button class='btn btn-info' ng-disabled="basicInfoForm.$invalid">Save & Continue</button>
 
     </form> <!-- CLOSING BASIC INFO FORM INPUT FIELDS -->
-    <form name="reviewForm" method="post" ng-submit="clear()">
-          <button class='btn btn-info'>Clear</button>
-        </form>
     </div>  <!-- CLOSE BASIC INFO FORM -->
 
     <div ng-show="showAboutForm"><h2>About</h2>
@@ -88,14 +85,14 @@
       <!-- Married: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.married.$invalid }">
         <label>Married</label><br />
-        <input type="radio" name="married" value="true" ng-model="data.about.married"> Yes
+        <input type="radio" name="married" value="true" ng-model="data.about.married" required> Yes
         <input type="radio" name="married" value="false" ng-model="data.about.married"> No
       </div>
 
       <!-- Drink Alcohol: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.drink.$invalid }">
         <label>Drink Alcohol</label><br />
-        <input type="radio" name="drink" value="true" ng-model="data.about.drink">Yes
+        <input type="radio" name="drink" value="true" ng-model="data.about.drink" required>Yes
         <input type="radio" name="drink" value="false" ng-model="data.about.drink" > No
       </div>      
 
@@ -103,9 +100,6 @@
       <button class='btn btn-info' ng-disabled="aboutForm.$invalid">Save & Review</button>
 
     </form> <!-- CLOSING ABOUT FORM INPUT FIELDS -->
-    <form name="reviewForm" method="post" ng-submit="clear()">
-          <button class='btn btn-info'>Clear</button>
-      </form>
     </div> <!-- CLOSE ABOUT FORM-->
     <div ng-show="review"><h2>Review</h2> <!-- Show Review Form -->
       <div class='well well-lg' style="width:50%; margin:auto;">
@@ -125,7 +119,7 @@
         <strong>Charaties: </strong><span>{{data.about.charaties}}</span><br />
         <strong>Married: </strong><span>{{data.about.married}}</span><br />
         <strong>Drinks Alcohol: </strong><span>{{data.about.drink}}</span><br /><br />
-        <form name="reviewForm" method="post" ng-submit="submitFinal()">
+        <form name="reviewForm" method="post" ng-submit="submitUpdated()">
           <button class='btn btn-info'>Submit</button>
         </form>
       </div>

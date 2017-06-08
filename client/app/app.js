@@ -16,5 +16,9 @@ angular.module('osc', [
     templateUrl: './app/newProfile/newProfile.tmpl.html',
     controller: 'NewProfileCtrl'
   })
+  .when('/updateProfile', {
+    templateUrl: './app/updateProfile/updateProfile.tmpl.html',
+    controller: 'NewProfileCtrl'
+  })
   .otherwise({ redirectTo: '/allProfiles' });
 });

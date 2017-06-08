@@ -1,5 +1,5 @@
-<div ng-controller="AllProfilesCtrl">
-  <div><h1>All Profiles</h1></div>
+<div>
+  <div class="page-header"><h1>All Profiles</h1></div>
   <div ng-hide="noProfiles" ng-repeat="profile in profiles track by $index">
     <div class='well well-lg' style="width:50%; margin:auto;">
       <h4>Basic Info</h4>
@@ -17,7 +17,10 @@
       <strong>Interests: </strong><span>{{profile.about.interests}}</span><br />
       <strong>Charaties: </strong><span>{{profile.about.charaties}}</span><br />
       <strong>Married: </strong><span>{{profile.about.married}}</span><br />
-      <strong>Drinks Alcohol: </strong><span>{{profile.about.drink}}</span>
+      <strong>Drinks Alcohol: </strong><span>{{profile.about.drink}}</span><br />
+      <form name="reviewForm" method="post" ng-submit="updateProfile(profile)">
+          <button class='btn btn-info'>Edit</button>
+      </form>
     </div><br />
   </div>
   <div class='well well-lg' ng-show="noProfiles" style="width:50%; margin:auto; text-align: center">

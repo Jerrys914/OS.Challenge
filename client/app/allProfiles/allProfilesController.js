@@ -1,6 +1,6 @@
 angular.module('osc.allProfiles',[])
   
-.controller('AllProfilesCtrl', function($scope, $window, $location, $http) {
+.controller('AllProfilesCtrl', function($scope, $window, $location, $http, Profile) {
   $scope.profiles = [];
   $http({
     method: "GET",
@@ -12,4 +12,12 @@ angular.module('osc.allProfiles',[])
       $scope.noProfiles = true;
     }
   });
+  $scope.updateProfile = (profile) => {
+    Profile.setData(profile);
+    $location.path('/updateProfile');
+  }
+  $scope.clear = () => {
+    Profile.clearData();
+    $location.path('/')
+  }
 });

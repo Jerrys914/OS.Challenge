@@ -23,7 +23,7 @@ angular.module('osc.services', [])
     };
   };
   const saveNewProfile = () => {
-    filterData();
+    // filterData();
     return $http({
       method: 'POST',
       url: '/api/createNewProfile',
@@ -45,8 +45,17 @@ angular.module('osc.services', [])
     } else {
       data.about.interests = []
     }
-    
     console.log('FILTERED DATA: ', data)
   };
-  return { setData, setBasicInfo, setAboutInfo, getData, clearData, saveNewProfile };
+  const update = () => {
+    return $http({
+      method: 'PUT',
+      url: '/api/updateProfile',
+      data: data
+    }).then(() => {
+      console.log('Profile Updated: ', data)
+      clearData()
+    })
+  };
+  return { setData, setBasicInfo, setAboutInfo, getData, clearData, saveNewProfile, update };
 });
