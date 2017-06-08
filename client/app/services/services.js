@@ -14,6 +14,9 @@ angular.module('osc.services', [])
     data.about = info;
   };
   const getData = () => {
+    if(data.basicInfo.dob){
+      data.basicInfo.dob = new Date(data.basicInfo.dob);
+    }
     return data
   };
   const clearData = () => {
@@ -32,7 +35,7 @@ angular.module('osc.services', [])
       clearData();
     })
   };
-  };
+  // };
   const update = () => {
     return $http({
       method: 'PUT',

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var ProfileSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  dateOfBirth: { type: Date, required: true },
+  dateOfBirth: { type: String, required: true },
   gender: { type: String, required: true },
   nationality: { type: String, required: true },
   sport: { type: String, required: true },

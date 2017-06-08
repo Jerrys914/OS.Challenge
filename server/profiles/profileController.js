@@ -2,11 +2,12 @@ const ProfileModel = require('./profileModel.js');
 
 const filterProfiles = (arr) => {
   return arr.map(profile => {
+    let date = profile.dateOfBirth.substring(0,10).split('-');
     return {
       id: profile.id,
       basicInfo: {
         name: profile.name,
-        dob: profile.dateOfBirth,
+        dob: date,
         gender: profile.gender,
         nationality: profile.nationality,
         sport: profile.sport
