@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "angular-ui-bootstrap": "^2.5.0",
+    "angular-ui-mask": "^1.8.7",
+    "body-parser": "^1.17.2",
+    "dirname": "^0.1.0",
+    "dotenv": "^4.0.0",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.5",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7"
+  }
+}
