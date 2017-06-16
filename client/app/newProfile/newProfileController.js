@@ -7,7 +7,7 @@ angular.module('osc.newProfile',[])
   $scope.review = false
 
   $scope.submitBasicInfo = () => {
-    Profile.setBasicInfo($scope.data.basicInfo);
+    Profile.setBasicInfo($scope.data.basicInfo)
     $scope.showBasicInfoForm = false;
     $scope.showAboutForm = true;
   }

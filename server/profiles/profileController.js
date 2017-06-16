@@ -50,7 +50,6 @@ module.exports = {
     })
   },
   getAllProfiles(req, res){
-    console.log('Get All Profiles')
     ProfileModel.find({}).then(profiles => {
       res.send(filterProfiles(profiles))
     }) 

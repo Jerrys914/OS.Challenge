@@ -2,7 +2,7 @@
   <div class="page-header"><h1>New Profile</h1></div>
 
   <div>
-    <div ng-show="showBasicInfoForm" class="page-header"><h2>Basic Info</h2>
+    <div ng-if="showBasicInfoForm" class="page-header"><h2>Basic Info</h2>
     <form name='basicInfoForm' method='post' ng-submit="submitBasicInfo(basicInfoForm.$valid)" novalidate>
       
       <!-- Name: Required-->
@@ -46,13 +46,13 @@
         </form>
     </div>  <!-- CLOSE BASIC INFO FORM -->
 
-    <div ng-show="showAboutForm"><h2>About</h2>
+    <div ng-if="showAboutForm"><h2>About</h2>
     <form name='aboutForm' method='post' ng-submit="submitAboutInfo(aboutForm.$valid)" novalidate>
 
       <!-- Description: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.description.$invalid }">
         <label>Description</label>
-        <input type="text" class="form-control" name="description" style="height:100px" ng-model="data.about.description" required>
+        <textarea type="text" class="form-control" name="description" style="height:100px" ng-model="data.about.description" required></textarea>
       </div>
 
       <!-- Location: Required-->
@@ -88,15 +88,15 @@
       <!-- Married: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.married.$invalid }">
         <label>Married</label><br />
-        <input type="radio" name="married" value="true" ng-model="data.about.married"> Yes
+        <input type="radio" name="married" value="true" ng-model="data.about.married" required> Yes
         <input type="radio" name="married" value="false" ng-model="data.about.married"> No
       </div>
 
       <!-- Drink Alcohol: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.drink.$invalid }">
         <label>Drink Alcohol</label><br />
-        <input type="radio" name="drink" value="true" ng-model="data.about.drink">Yes
-        <input type="radio" name="drink" value="false" ng-model="data.about.drink" > No
+        <input type="radio" name="drink" value="true" ng-model="data.about.drink" required>Yes
+        <input type="radio" name="drink" value="false" ng-model="data.about.drink"> No
       </div>      
 
       <!-- Save & Review Button -->
@@ -107,11 +107,11 @@
           <button class='btn btn-info'>Clear</button>
       </form>
     </div> <!-- CLOSE ABOUT FORM-->
-    <div ng-show="review"><h2>Review</h2> <!-- Show Review Form -->
+    <div ng-if="review"><h2>Review</h2> <!-- Show Review Form -->
       <div class='well well-lg' style="width:50%; margin:auto;">
         <h4>Basic Info</h4><form ng-submit="editBasicInfo()"><button>Edit</button></form><br />
         <strong>Name: </strong><span>{{data.basicInfo.name}}</span><br />
-        <strong>DoB: </strong> <span>{{data.basicInfo.dob.slice(0,10).split('-').reverse().join('/')}} (d/m/y)</span><br />
+        <strong>DoB: </strong> <span>{{data.basicInfo.dob.toString().slice(4,15)}}</span><br />
         <strong>Gender: </strong><span>{{data.basicInfo.gender}}</span><br />
         <strong>Nationality: </strong><span>{{data.basicInfo.nationality}}</span><br />
         <strong>Sport(s): </strong><span>{{data.basicInfo.sport}}</span><br /><br />

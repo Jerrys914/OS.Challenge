@@ -15,7 +15,13 @@ angular.module('osc.services', [])
   };
   const getData = () => {
     if(data.basicInfo.dob){
-      data.basicInfo.dob = new Date(data.basicInfo.dob);
+      data.basicInfo.dob = new Date(data.basicInfo.dob)
+    }
+    if(data.about.married != undefined){
+      data.about.married = data.about.married.toString();
+    }
+    if(data.about.drink != undefined){
+      data.about.drink = data.about.drink.toString();
     }
     return data
   };
@@ -33,9 +39,10 @@ angular.module('osc.services', [])
     })
     .then(() => {
       clearData();
+    }).catch(err => {
+      console.error(err);
     })
   };
-  // };
   const update = () => {
     return $http({
       method: 'PUT',
@@ -43,6 +50,8 @@ angular.module('osc.services', [])
       data: data
     }).then(() => {
       clearData()
+    }).catch(err => {
+      console.error(err);
     })
   };
   return { setData, setBasicInfo, setAboutInfo, getData, clearData, saveNewProfile, update };

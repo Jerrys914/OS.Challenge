@@ -2,7 +2,7 @@
   <div class="page-header"><h1>Update Profile</h1></div>
 
   <div>
-    <div ng-show="showBasicInfoForm" class="page-header"><h2>Basic Info</h2>
+    <div ng-if="showBasicInfoForm" class="page-header"><h2>Basic Info</h2>
     <form name='basicInfoForm' method='post' ng-submit="submitBasicInfo(basicInfoForm.$valid)" novalidate>
       
       <!-- Name: Required-->
@@ -43,7 +43,7 @@
     </form> <!-- CLOSING BASIC INFO FORM INPUT FIELDS -->
     </div>  <!-- CLOSE BASIC INFO FORM -->
 
-    <div ng-show="showAboutForm"><h2>About</h2>
+    <div ng-if="showAboutForm"><h2>About</h2>
     <form name='aboutForm' method='post' ng-submit="submitAboutInfo(aboutForm.$valid)" novalidate>
 
       <!-- Description: Required-->
@@ -92,8 +92,8 @@
       <!-- Drink Alcohol: Required-->
       <div class="form-group" ng-class="{ 'has-error' : aboutForm.drink.$invalid }">
         <label>Drink Alcohol</label><br />
-        <input type="radio" name="drink" value="true" ng-model="data.about.drink" required>Yes
-        <input type="radio" name="drink" value="false" ng-model="data.about.drink" > No
+        <input type="radio" name="drink" value="true" ng-model="data.about.drink" ng-selected='data.about.drink' required>Yes
+        <input type="radio" name="drink" value="false" ng-model="data.about.drink" ng-selected='!data.about.drink'> No
       </div>      
 
       <!-- Save & Review Button -->
@@ -101,7 +101,7 @@
 
     </form> <!-- CLOSING ABOUT FORM INPUT FIELDS -->
     </div> <!-- CLOSE ABOUT FORM-->
-    <div ng-show="review"><h2>Review</h2> <!-- Show Review Form -->
+    <div ng-if="review"><h2>Review</h2> <!-- Show Review Form -->
       <div class='well well-lg' style="width:50%; margin:auto;">
         <h4>Basic Info</h4><form ng-submit="editBasicInfo()"><button>Edit</button></form><br />
         <strong>Name: </strong><span>{{data.basicInfo.name}}</span><br />
