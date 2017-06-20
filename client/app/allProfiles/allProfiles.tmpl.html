@@ -15,11 +15,12 @@
     </form> <!-- Closing from group -->
   </div>
   <!-- All Profiles View --> 
-  <div ng-hide="noProfiles" ng-repeat="profile in profiles | filter:searchText track by $index">
+  <div ng-if="!noProfiles" ng-repeat="profile in profiles | filter:searchText track by $index">
     <div class='well well-lg' style="width:50%; margin:auto;">
       <h4>Basic Info</h4>
+      <strong>{{profile}}</strong>
       <strong>Name: </strong><span>{{profile.basicInfo.name}}</span><br />
-      <strong>DoB: </strong> <span>{{profile.basicInfo.dob.join('-').split('-').reverse().join('/')}} (d/m/y)</span><br />
+      <strong>DoB: </strong> <span>{{profile.basicInfo.dob.toString()}}</span><br />
       <strong>Gender: </strong><span>{{profile.basicInfo.gender}}</span><br />
       <strong>Nationality: </strong><span>{{profile.basicInfo.nationality}}</span><br />
       <strong>Sport(s): </strong><span>{{profile.basicInfo.sport}}</span><br /><br />
@@ -38,7 +39,7 @@
       </form>
     </div><br />
   </div>
-  <div class='well well-lg' ng-show="noProfiles" style="width:50%; margin:auto; text-align: center">
+  <div class='well well-lg' ng-if="noProfiles" style="width:50%; margin:auto; text-align: center">
     <h2>No Profiles Yet</h2>
   </div>
 </div>

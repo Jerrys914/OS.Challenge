@@ -2,12 +2,11 @@ const ProfileModel = require('./profileModel.js');
 
 const filterProfiles = (arr) => {
   return arr.map(profile => {
-    let date = profile.dateOfBirth.substring(0,10).split('-');
     return {
       id: profile.id,
       basicInfo: {
         name: profile.name,
-        dob: date,
+        dob: profile.dateOfBirth,
         gender: profile.gender,
         nationality: profile.nationality,
         sport: profile.sport
@@ -21,7 +20,8 @@ const filterProfiles = (arr) => {
         charities: profile.charities,
         married: profile.married,
         drink: profile.drink
-      }
+      },
+      handles: profile.handles
     };
   });
 };
@@ -40,7 +40,8 @@ module.exports = {
       interests: req.body.about.interests,
       charities: req.body.about.charities,
       married: req.body.about.married,
-      drink: req.body.about.drink
+      drink: req.body.about.drink,
+      handles: req.body.handles
     });
     newProfile.save((err, profile) => {
       if(err) {
@@ -51,7 +52,8 @@ module.exports = {
   },
   getAllProfiles(req, res){
     ProfileModel.find({}).then(profiles => {
-      res.send(filterProfiles(profiles))
+      let filtered = filterProfiles(profiles); 
+      res.send(filtered)
     }) 
   },
   update(req, res){
@@ -68,7 +70,8 @@ module.exports = {
       interests: req.body.about.interests,
       charities: req.body.about.charities,
       married: req.body.about.married,
-      drink: req.body.about.drink
+      drink: req.body.about.drink,
+      handles: req.body.handles
     }).then(profile => {
       res.end()
     })

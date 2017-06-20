@@ -34,7 +34,9 @@
       <!-- Sport: Required-->
       <div class="form-group" ng-class="{ 'has-error' : basicInfoForm.sport.$invalid }">
         <label>Sport(s)</label>
-        <input type="text" placeholder="Football, Baseketball" class="form-control" name="sport" ng-model="data.basicInfo.sport" required>
+        <select name="sport" ng-model="data.basicInfo.sport" multiple="true" size="10" required>
+          <option ng-repeat="option in sportOptions" value="{{option}}">{{option}}</option>
+        </select>
       </div>
 
       <!-- Save & Continue Button -->
@@ -111,7 +113,7 @@
       <div class='well well-lg' style="width:50%; margin:auto;">
         <h4>Basic Info</h4><form ng-submit="editBasicInfo()"><button>Edit</button></form><br />
         <strong>Name: </strong><span>{{data.basicInfo.name}}</span><br />
-        <strong>DoB: </strong> <span>{{data.basicInfo.dob.toString().slice(4,15)}}</span><br />
+        <strong>DoB: </strong> <span>{{data.basicInfo.dob}}</span><br />
         <strong>Gender: </strong><span>{{data.basicInfo.gender}}</span><br />
         <strong>Nationality: </strong><span>{{data.basicInfo.nationality}}</span><br />
         <strong>Sport(s): </strong><span>{{data.basicInfo.sport}}</span><br /><br />
