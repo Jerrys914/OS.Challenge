@@ -5,6 +5,9 @@ angular.module('osc.newProfile',[])
   if($location.url() === '/newProfile'){
     Profile.clearData();
   }
+  if($location.url() === '/updateProfile' && !$scope.data.basicInfo.name){
+    $location.path('/')
+  }
   $scope.sportOptions = [ "Golf",
     "Tennis",
     "Cricket",
