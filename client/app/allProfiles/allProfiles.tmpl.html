@@ -24,6 +24,10 @@
       <strong>Nationality: </strong><span>{{profile.basicInfo.nationality}}</span><br />
       <strong>Sport(s): </strong><span><span><ul style="padding-left:15px;"><li ng-repeat="s in profile.basicInfo.sport">{{s}}</li></ul></span><br /><br />
 
+      <h4>Social Media</h4>
+      <p ng-repeat="handle in profile.handles"><strong>{{handle[0].toUpperCase()}}: </strong>{{handle[1]}}</p><br />
+
+
       <h4>About</h4>
       <strong>Description: </strong><span>{{profile.about.description}}</span><br />
       <strong>Locations: </strong><span><span><ul style="padding-left:15px;"><li ng-repeat="loc in profile.about.location">{{loc}}</li></ul></span><br />

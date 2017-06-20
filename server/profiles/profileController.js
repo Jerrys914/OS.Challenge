@@ -2,6 +2,7 @@ const ProfileModel = require('./profileModel.js');
 
 const filterProfiles = (arr) => {
   return arr.map(profile => {
+    let formattedHandles = formatHandles(profile.handles);
     return {
       id: profile.id,
       basicInfo: {
@@ -21,9 +22,16 @@ const filterProfiles = (arr) => {
         married: profile.married,
         drink: profile.drink
       },
-      handles: profile.handles
+      handles: formattedHandles
     };
   });
+};
+const formatHandles = (handlesObj) => {
+  let arr = [];
+  for(let prop in handlesObj){
+    arr.push([prop, handlesObj[prop]])
+  }
+  return arr;
 };
 module.exports = {
   createNewProfile(req, res) {

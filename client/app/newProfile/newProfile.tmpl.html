@@ -44,9 +44,37 @@
 
     </form> <!-- CLOSING BASIC INFO FORM INPUT FIELDS -->
     <form name="reviewForm" method="post" ng-submit="clear()">
-          <button class='btn btn-info'>Clear</button>
-        </form>
+      <button class='btn btn-info'>Clear</button>
+    </form>
     </div>  <!-- CLOSE BASIC INFO FORM -->
+
+    <div ng-if="showHandlesForm" class="page-header"><h2>Social Media</h2>
+    <form name='handlesForm' method='post' ng-submit="submitHandles()">
+      
+      <div class="form-group" ng-class="{ 'has-error' : basicInfoForm.name.$invalid }">
+        <label>Twitter</label>
+        <input type="text" class="form-control" name="twitter" ng-model="data.handles.twitter">
+      </div>
+
+      <div class="form-group">
+        <label>Facebook</label>
+        <input type="text" class="form-control" name="facebook" ng-model="data.handles.facebook">
+      </div>
+
+      <div class="form-group">
+        <label>Instagram </label><br />
+        <input type="text" class="form-control" name="instagram" ng-model="data.handles.instagram"> 
+      </div>
+
+      <div class="form-group">
+        <label>Twitch</label>
+        <input type="text" class="form-control" name="twitch" ng-model="data.handles.twitch" >
+      </div>
+
+      <!-- Save & Continue Button -->
+      <button class='btn btn-info'>Save & Continue</button>
+      </form> <!-- CLOSING Handles FORM INPUT FIELDS -->
+    </div>
 
     <div ng-if="showAboutForm"><h2>About</h2>
     <form name='aboutForm' method='post' ng-submit="submitAboutInfo(aboutForm.$valid)" novalidate>
@@ -109,6 +137,7 @@
           <button class='btn btn-info'>Clear</button>
       </form>
     </div> <!-- CLOSE ABOUT FORM-->
+
     <div ng-if="review"><h2>Review</h2> <!-- Show Review Form -->
       <div class='well well-lg' style="width:50%; margin:auto;">
         <h4>Basic Info</h4><form ng-submit="editBasicInfo()"><button>Edit</button></form><br />
@@ -117,6 +146,12 @@
         <strong>Gender: </strong><span>{{data.basicInfo.gender}}</span><br />
         <strong>Nationality: </strong><span>{{data.basicInfo.nationality}}</span><br />
         <strong>Sport(s): </strong><span>{{data.basicInfo.sport}}</span><br /><br />
+
+        <h4>Social Media</h4><form ng-submit="editHandlesForm()"><button>Edit</button></form><br />
+        <strong>Twitter: </strong><span>{{data.handles.twitter}}</span><br />
+        <strong>Facebook: </strong><span>{{data.handles.facebook}}</span><br />
+        <strong>Instagram: </strong><span>{{data.handles.instagram}}</span><br />
+        <strong>Twitch: </strong><span>{{data.handles.twitch}}</span><br />
 
         <h4>About</h4><form ng-submit="editAboutForm()"><button>Edit</button></form><br />
         <strong>Description: </strong><span>{{data.about.description}}</span><br />

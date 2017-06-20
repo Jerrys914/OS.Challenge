@@ -57,12 +57,19 @@ angular.module('osc.newProfile',[])
   ];
   $scope.showBasicInfoForm = true;
   $scope.showAboutForm = false;
+  $scope.showHandlesForm = false;
   $scope.review = false
 
   $scope.submitBasicInfo = () => {
     Profile.setBasicInfo($scope.data.basicInfo)
     $scope.showBasicInfoForm = false;
-    $scope.showAboutForm = true;
+    $scope.showHandlesForm = true;
+  }
+  $scope.submitHandles = () => {
+    Profile.setHandles($scope.data.handles, ()=>{
+      $scope.showHandlesForm = false;
+      $scope.showAboutForm = true;
+    });
   }
   $scope.submitAboutInfo = () => {
     Profile.setAboutInfo($scope.data.about);
@@ -81,6 +88,10 @@ angular.module('osc.newProfile',[])
   $scope.editAboutForm = () => {
     $scope.review = false;
     $scope.showAboutForm = true;
+  }
+  $scope.editHandlesForm = () => {
+    $scope.review = false;
+    $scope.showHandlesForm = true;
   }
   $scope.clear = () => {
     Profile.clearData();

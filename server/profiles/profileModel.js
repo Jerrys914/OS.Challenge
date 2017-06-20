@@ -13,7 +13,8 @@ var ProfileSchema = new mongoose.Schema({
   interests: { type: Array, required: true },
   charities: { type: Array },
   married: { type: Boolean, required: true },
-  drink: { type: Boolean, required: true }
+  drink: { type: Boolean, required: true }, 
+  handles: { type: Object }
 });
 
 var Profile = mongoose.model('Profile', ProfileSchema);

@@ -2,10 +2,12 @@ angular.module('osc.services', [])
 .factory('Profile', ($http) => {
   let data = {
     basicInfo: {},
-    about: {}
+    about: {},
+    handles: {}
   };
   const setData = (profile,cb) => {
     profile.basicInfo.dob = new Date(profile.basicInfo.dob.substring(0,10).split('-').reverse());
+    profile.handles = updateHandlesFormat(profile.handles)
     data = profile;
     cb();
   }
@@ -20,8 +22,25 @@ angular.module('osc.services', [])
   const getData = () => {
     return data
   };
+  const updateHandlesFormat = (arr) => {
+    let obj = {};
+    arr.forEach(pair=> {
+      obj[pair[0]] = pair[1];
+    });
+    return obj;
+  }
+  const setHandles = (handles, cb) => {
+    for(let prop in handles) {
+      if(handles[prop] === ''){
+        delete handles[prop]
+      }
+    }
+    if(Object.keys(handles).length > 0){
+      data.handles = handles;
+    }
+    cb();
+  };
   const formatData = () => {
-    console.log("DOB: ",data.basicInfo.dob)
     if(data.about.married != undefined){
       data.about.married = data.about.married.toString();
     }
@@ -41,14 +60,14 @@ angular.module('osc.services', [])
   const clearData = (cb) => {
     data = {
       basicInfo: {},
-      about: {}
+      about: {},
+      handles: {}
     };
     if(cb){
       cb();
     }
   };
   const saveNewProfile = () => {
-    // formatData();
     return $http({
       method: 'POST',
       url: '/api/createNewProfile',
@@ -71,5 +90,5 @@ angular.module('osc.services', [])
       console.error(err);
     })
   };
-  return { setData, setBasicInfo, setAboutInfo, getData, clearData, saveNewProfile, update };
+  return { setData, setHandles, setBasicInfo, setAboutInfo, getData, clearData, saveNewProfile, update };
 });
