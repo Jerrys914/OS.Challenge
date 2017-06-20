@@ -2,6 +2,9 @@ angular.module('osc.newProfile',[])
 
 .controller('NewProfileCtrl', function($scope, $window, $location, Profile) {
   $scope.data = Profile.getData();
+  if($location.url() === '/newProfile'){
+    Profile.clearData();
+  }
   $scope.sportOptions = [ "Golf",
     "Tennis",
     "Cricket",

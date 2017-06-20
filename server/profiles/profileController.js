@@ -6,7 +6,7 @@ const filterProfiles = (arr) => {
       id: profile.id,
       basicInfo: {
         name: profile.name,
-        dob: profile.dateOfBirth,
+        dob: profile.dateOfBirth.toString(),
         gender: profile.gender,
         nationality: profile.nationality,
         sport: profile.sport

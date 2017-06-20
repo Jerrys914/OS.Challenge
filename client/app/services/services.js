@@ -21,6 +21,7 @@ angular.module('osc.services', [])
     return data
   };
   const formatData = () => {
+    console.log("DOB: ",data.basicInfo.dob)
     if(data.about.married != undefined){
       data.about.married = data.about.married.toString();
     }
