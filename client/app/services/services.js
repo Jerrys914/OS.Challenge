@@ -79,13 +79,14 @@ angular.module('osc.services', [])
       console.error(err);
     })
   };
-  const update = () => {
+  const update = (cb) => {
     return $http({
       method: 'PUT',
       url: '/api/updateProfile',
       data: data
     }).then(() => {
-      clearData()
+      clearData();
+      cb();
     }).catch(err => {
       console.error(err);
     })

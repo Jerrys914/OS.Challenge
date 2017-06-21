@@ -101,7 +101,8 @@ angular.module('osc.newProfile',[])
     $location.path('/')
   }
   $scope.submitUpdated = () => {
-    Profile.update();
-    $location.path('/');
+    Profile.update(()=>{
+      $location.path('/');
+    });
   }
 });
